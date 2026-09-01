@@ -1,0 +1,25 @@
+:root{
+--font-display:"Anton",Impact,sans-serif;
+--font-display-tracking:0.03em;
+--font-display-transform:uppercase;
+--font-mark:"Courier Prime","Courier New",monospace;
+--font-mark-tracking:0.08em;
+--font-mark-style:normal;
+--font-body:"Raleway",-apple-system,sans-serif;
+--text-display-xl:clamp(3rem,6vw,6rem);
+--text-display-lg:clamp(2.25rem,4vw,4rem);
+--text-display-md:clamp(1.75rem,3vw,2.75rem);
+--text-heading:1.5rem;
+--text-subhead:1.125rem;
+--text-body:1rem;
+--text-small:0.875rem;
+--text-caption:0.75rem;
+--lh-tight:1.05; /* @kind other */
+--lh-snug:1.25; /* @kind other */
+--lh-normal:1.55; /* @kind other */
+--tracking-wide:0.08em;
+--tracking-wider:0.16em;
+--weight-body:400;
+--weight-medium:500;
+--weight-semibold:600;
+}

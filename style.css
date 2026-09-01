@@ -1,0 +1,555 @@
+/* ============================================================
+   Caldero & Copa — Vermutería nómada
+   Laboratorio inmersivo · index styles
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--surface-bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-normal);
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.eyebrow {
+  font-family: var(--font-mark);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  font-size: var(--text-caption);
+  color: var(--text-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  letter-spacing: var(--font-display-tracking);
+  text-transform: var(--font-display-transform);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--lh-tight);
+}
+
+h2 { font-size: var(--text-display-md); }
+
+.section {
+  padding: clamp(3.5rem, 9vw, 7rem) 0;
+  position: relative;
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 0 2.5rem;
+}
+.section-head h2 { margin-top: 0.5rem; }
+.section-head p { color: var(--text-muted); font-size: var(--text-subhead); margin-top: 0.9rem; }
+
+hr.rule {
+  border: none;
+  border-top: 1px solid var(--border-copper);
+  margin: 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-mark);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-size: var(--text-small);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.95em 1.6em;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: var(--action-primary-bg);
+  color: var(--action-primary-text);
+}
+.btn-primary:hover { background: var(--action-primary-bg-hover); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-on-dark);
+  border-color: rgba(255,255,255,.55);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-copper);
+}
+.btn-outline:hover { background: var(--surface-card); }
+.btn-buy {
+  width: 100%;
+  justify-content: center;
+  background: var(--kit-accent, var(--action-primary-bg));
+  color: var(--bone-50);
+  font-size: var(--text-small);
+}
+.btn-buy:hover { filter: brightness(1.08); }
+
+.sumup-flag {
+  margin-top: .55rem;
+  font-family: var(--font-mark);
+  font-size: 0.7rem;
+  letter-spacing: .04em;
+  text-align: center;
+  color: var(--vermut-600);
+  background: repeating-linear-gradient(45deg, rgba(166,58,64,.08), rgba(166,58,64,.08) 6px, rgba(166,58,64,.16) 6px, rgba(166,58,64,.16) 12px);
+  border: 1px dashed var(--vermut-500);
+  border-radius: 3px;
+  padding: .4rem .5rem;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem clamp(1.25rem, 4vw, 2.5rem);
+  font-family: var(--font-mark);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--text-small);
+  color: var(--text-on-dark);
+  transition: background .3s ease, color .3s ease, backdrop-filter .3s ease;
+}
+.nav.is-scrolled {
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(6px);
+  color: var(--text-primary);
+  box-shadow: 0 1px 0 var(--border-copper);
+}
+.nav .brand { font-family: var(--font-display); letter-spacing: .04em; font-size: 1.1rem; }
+.nav-links { display: flex; gap: 1.6rem; }
+.nav-links a { text-decoration: none; opacity: .85; }
+.nav-links a:hover { opacity: 1; }
+@media (max-width: 640px){ .nav-links { display:none; } }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  color: var(--text-on-dark);
+  isolation: isolate;
+}
+.hero__bg {
+  position: absolute; inset: 0;
+  background-image: url("../images/hero-obrador.jpg");
+  background-size: cover;
+  background-position: center 42%;
+  filter: saturate(1.08) contrast(1.02) brightness(.94);
+  z-index: -2;
+}
+.hero__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(40,11,15,.22) 0%, rgba(40,11,15,.18) 30%, rgba(24,9,7,.62) 66%, rgba(15,6,4,.9) 100%);
+  z-index: -1;
+}
+.hero__content {
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem) clamp(3rem, 9vw, 5.5rem);
+  max-width: 900px;
+}
+.hero h1 {
+  color: var(--text-on-dark);
+  font-size: var(--text-display-xl);
+  margin: 0 0 1rem;
+  text-shadow: 0 4px 28px rgba(0,0,0,.55);
+}
+.hero p.lede {
+  font-size: var(--text-subhead);
+  max-width: 46ch;
+  color: var(--bone-100);
+  opacity: .92;
+  margin-bottom: 1.8rem;
+}
+.hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero__scrolldown {
+  position: absolute;
+  bottom: 1.6rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mark);
+  font-size: .68rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--bone-100);
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  opacity: .9;
+  white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0,0,0,.5);
+}
+.hero__scrolldown span { width: 1px; height: 26px; background: currentColor; animation: scrolldown 1.8s ease-in-out infinite; transform-origin: top; }
+@keyframes scrolldown { 0%{transform:scaleY(0);opacity:0;} 30%{transform:scaleY(1);opacity:1;} 100%{transform:scaleY(1);opacity:0;} }
+
+/* ============================================================
+   EL RITUAL — historia + proceso fusionados. Fondo claro estándar
+   del sitio (nada de verde oliva), con la ilustración de cada
+   paso encima del número, sin carrusel: todo visible de un vistazo.
+   ============================================================ */
+.proceso { background: var(--surface-bg); }
+.proceso .section-head blockquote {
+  margin: 1.4rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--vermut-700);
+  font-family: var(--font-mark);
+  font-size: var(--text-small);
+  color: var(--roast-800);
+  letter-spacing: .02em;
+}
+.proceso__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+  position: relative;
+}
+.paso { position: relative; }
+.paso__img {
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--vermut-100), var(--surface-card) 80%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+.paso__img img { width: 78%; filter: drop-shadow(0 10px 18px rgba(40,11,15,.18)); }
+.paso__num {
+  font-family: var(--font-mark);
+  font-size: var(--text-small);
+  color: var(--vermut-700);
+}
+.paso h3 {
+  font-size: 1.35rem;
+  margin: .4rem 0 .6rem;
+}
+.paso p { color: var(--text-muted); font-size: .95rem; }
+.paso__meta {
+  display: inline-block;
+  margin-top: .7rem;
+  font-family: var(--font-mark);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--olive-600);
+}
+@media (max-width: 760px) {
+  .proceso__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+.proceso__note {
+  margin-top: 3rem;
+  padding: clamp(1.3rem, 3vw, 1.8rem);
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: .95rem;
+}
+.proceso__note strong { color: var(--text-primary); }
+.proceso__jar strong { color: var(--text-primary); }
+@media (max-width: 560px){ .proceso__jar { flex-direction: column; text-align:center; } }
+
+/* ============================================================
+   KITS
+   ============================================================ */
+/* ============================================================
+   KITS — fichas grandes de producto: sabor, botánicos, formato
+   y precio bien separados, con aire entre bloques.
+   ============================================================ */
+.kits { background: var(--surface-bg); }
+
+.kits-carousel { position: relative; margin-top: 2.5rem; }
+.kits-carousel__track {
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: clamp(1.25rem, 4vw, 2.5rem);
+  padding: .5rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem 0;
+  margin: -.5rem 0 -1.5rem clamp(-1.25rem, -4vw, -2.5rem);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--copper-400) transparent;
+}
+.kits-carousel__track::-webkit-scrollbar { height: 6px; }
+.kits-carousel__track::-webkit-scrollbar-thumb { background: var(--copper-400); border-radius: 3px; }
+
+.kits-carousel__arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-copper);
+  background: var(--bone-50);
+  color: var(--roast-950);
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 10px 20px -10px rgba(40,11,15,.3);
+  transition: background .2s ease;
+}
+.kits-carousel__arrow:hover { background: var(--vermut-100); }
+.kits-carousel__arrow--prev { left: -8px; }
+.kits-carousel__arrow--next { right: -8px; }
+@media (max-width: 700px) {
+  .kits-carousel__arrow { display: none; }
+}
+
+.kit-card {
+  --kit-accent: var(--vermut-700);
+  --kit-tint: var(--vermut-100);
+  flex: 0 0 min(400px, 82vw);
+  scroll-snap-align: start;
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.kit-card:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -20px rgba(40,11,15,.35); }
+
+.kit-card__media {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(180deg, var(--kit-tint), var(--surface-card) 80%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+}
+.kit-card__media img { width: 68%; }
+
+.kit-card__body { padding: 1.8rem 1.9rem 2rem; display: flex; flex-direction: column; gap: 1.3rem; flex: 1; }
+.kit-card__name { font-size: 1.9rem; color: var(--kit-accent); }
+.kit-card__quote {
+  font-family: var(--font-mark);
+  font-size: .92rem;
+  font-style: normal;
+  color: var(--text-muted);
+  line-height: var(--lh-snug);
+  border-left: 2px solid var(--kit-accent);
+  padding-left: .8rem;
+  margin: 0;
+}
+
+.kit-card__block { display: flex; flex-direction: column; gap: .5rem; }
+.kit-card__label {
+  font-family: var(--font-mark);
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+  opacity: .8;
+}
+.kit-card__chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+.chip {
+  font-family: var(--font-mark);
+  font-size: .7rem;
+  letter-spacing: .02em;
+  padding: .32rem .6rem;
+  border-radius: 20px;
+}
+.chip--flavor {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: var(--kit-accent);
+  color: var(--bone-50);
+  font-weight: 600;
+}
+.chip--botanical {
+  background: var(--kit-tint);
+  color: var(--roast-950);
+  opacity: .9;
+  border: 1px solid rgba(40,11,15,.08);
+}
+
+hr.kit-card__rule {
+  border: none;
+  border-top: 1px solid var(--border-default);
+  margin: 0;
+}
+
+/* toggle Esencia / Premium — el precio va en la propia pastilla,
+   y el estado inactivo lleva su propio fondo tintado para que la
+   diferencia entre "elegido" y "no elegido" no dependa solo de un
+   borde fino. */
+.format-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border-copper);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: .2rem;
+}
+.format-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.format-toggle label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+  text-align: center;
+  padding: .55rem .4rem .6rem;
+  cursor: pointer;
+  background: var(--kit-tint);
+  color: var(--text-muted);
+  transition: background .15s ease, color .15s ease;
+}
+.format-toggle label + label { border-left: 1px solid var(--border-copper); }
+.format-toggle__name {
+  font-family: var(--font-mark);
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.format-toggle__price {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+.format-toggle input:checked + label {
+  background: var(--kit-accent);
+  color: var(--bone-50);
+}
+.format-toggle input:focus-visible + label {
+  outline: 2px solid var(--kit-accent);
+  outline-offset: -2px;
+}
+
+.kit-card__desc { font-size: .85rem; color: var(--text-muted); min-height: 2.6em; }
+.kit-card__price {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  letter-spacing: 0;
+}
+.kit-card__price span { font-family: var(--font-mark); font-size: .7rem; color: var(--text-muted); text-transform: none; letter-spacing: 0; margin-left: .4rem; }
+
+/* ============================================================
+   PRUEBA / producto real
+   ============================================================ */
+.prueba { background: var(--roast-950); color: var(--text-on-dark); }
+.prueba .container { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem,6vw,5rem); align-items: center; }
+.prueba img { border-radius: 6px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+.prueba .eyebrow { color: var(--copper-400); }
+.prueba h2 { color: var(--bone-50); margin-top: .5rem; }
+.prueba p { color: var(--bone-200); font-size: var(--text-subhead); margin-top: 1rem; max-width: 46ch; }
+.prueba__stats { display: flex; gap: 2.2rem; margin-top: 2rem; flex-wrap: wrap; }
+.prueba__stats div strong { display:block; font-family: var(--font-display); font-size: 1.6rem; color: var(--copper-200); }
+.prueba__stats div span { font-family: var(--font-mark); font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; color: var(--bone-300); }
+@media (max-width: 860px){ .prueba .container{ grid-template-columns: 1fr; } .prueba img{ max-width:320px; margin:0 auto;} }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--roast-950);
+  color: var(--bone-200);
+  padding: 3rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.site-footer .container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; }
+.site-footer .brand { font-family: var(--font-display); font-size: 1.4rem; color: var(--bone-50); }
+.site-footer .tag { font-family: var(--font-mark); font-size: .75rem; color: var(--copper-200); margin-top:.3rem; }
+.footer-links { display:flex; gap:2.5rem; flex-wrap:wrap; }
+.footer-links h4 { font-family: var(--font-mark); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--bone-300); margin-bottom:.7rem; }
+.footer-links ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.45rem; }
+.footer-links a { text-decoration:none; color:var(--bone-200); font-size:.9rem; }
+.footer-links a:hover { color: var(--bone-50); }
+.footer-bottom { margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.08); text-align:center; font-size:.78rem; color:var(--bone-300); }
+
+/* ============================================================
+   GATO GUÍA — signature element
+   ============================================================ */
+#cat-guide {
+  position: fixed;
+  right: clamp(0.8rem, 3vw, 2.2rem);
+  bottom: clamp(1rem, 4vh, 2.4rem);
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  gap: .7rem;
+  opacity: 0;
+  transform: translateY(18px) scale(.92);
+  transition: opacity .5s ease, transform .5s ease;
+  pointer-events: none;
+}
+#cat-guide.is-visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+#cat-guide img {
+  width: clamp(72px, 9vw, 108px);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.45)) drop-shadow(0 0 14px rgba(250,246,239,.5));
+  animation: cat-breathe 4.5s ease-in-out infinite;
+  cursor: pointer;
+}
+@keyframes cat-breathe { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-5px);} }
+.cat-bubble {
+  position: relative;
+  max-width: 190px;
+  background: var(--bone-50);
+  color: var(--roast-950);
+  border: 1px solid var(--border-copper);
+  border-radius: 10px 10px 2px 10px;
+  padding: .55rem .75rem;
+  font-family: var(--font-mark);
+  font-size: .72rem;
+  line-height: 1.35;
+  box-shadow: 0 10px 20px -10px rgba(0,0,0,.3);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.cat-bubble.is-active { opacity: 1; transform: translateY(0); }
+@media (max-width: 560px) {
+  .cat-bubble { max-width: 140px; font-size: .68rem; }
+  #cat-guide img { width: 64px; }
+}
+
+/* utility reveal-on-scroll — only hides content once we've confirmed JS
+   is running (html.js), so the page is fully visible without JavaScript */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.is-in { opacity: 1; transform: translateY(0); }
+
