@@ -19,15 +19,16 @@
 <div class="fixed-header">
   <div class="promo-strip">
     🎃🎄 No te pierdas los especiales de <strong>Halloween</strong> y <strong>Navidad</strong> — catas temáticas ya en agenda.
-    <a href="https://wa.me/34677118651?text=Hola%2C%20quiero%20info%20de%20los%20especiales%20de%20Halloween%2FNavidad" target="_blank">Reserva fecha →</a>
+    <a href="https://wa.me/34XXXXXXXXX?text=Hola%2C%20quiero%20info%20de%20los%20especiales%20de%20Halloween%2FNavidad" target="_blank">Reserva fecha →</a>
   </div>
   <nav class="nav" id="siteNav">
     <div class="brand"><img src="logo.png" alt="Caldero & Copa"></div>
     <div class="nav-links">
+      <a href="#barra-nomada">La Barra</a>
       <a href="#experiencias">Experiencias</a>
       <a href="#galeria">Galería</a>
       <a href="#kits">Kits</a>
-      <a href="https://wa.me/34677118651?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Caldero%20%26%20Copa" target="_blank">WhatsApp</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </nav>
 </div>
@@ -40,17 +41,34 @@
     <h1>El primer cóctel botánico llevaba siglos sirviéndose. Se llama vermut.</h1>
     <p class="lede">Maceramos plantas mediterráneas en alcohol y las combinamos con vino — el mismo proceso de boticario que dio origen al vermut. Lo servimos en catas, talleres y barras de autor allá donde nos inviten: bodegas, barcos, terrazas.</p>
     <div class="hero__actions">
-      <a class="btn btn-primary" href="https://wa.me/34677118651?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Caldero%20%26%20Copa" target="_blank">Escríbenos por WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/34XXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Caldero%20%26%20Copa" target="_blank">Escríbenos por WhatsApp</a>
       <a class="btn btn-ghost" href="#experiencias">Ver qué hacemos</a>
     </div>
   </div>
-  <a class="hero__scrolldown" href="#experiencias"><span></span>Descubre</a>
+  <a class="hero__scrolldown" href="#barra-nomada"><span></span>Descubre</a>
 </header>
+
+<section class="prueba" id="barra-nomada">
+  <div class="container">
+    <div>
+      <span class="eyebrow">El corazón de todo</span>
+      <h2>Como una coctelería, pero de vermut.</h2>
+      <p>Sobre una base de vermut, tú eliges los botánicos y nosotros te lo preparamos al momento — como un cóctel, pero de vermut. Creamos una carta temática para cada ocasión: tu boda, una fiesta de Halloween, una celebración de Navidad o el evento de empresa que se te ocurra. Cuéntanos tu plan.</p>
+      <div class="prueba__stats">
+        <div><strong>Bodas</strong><span>Barra de bienvenida o sobremesa</span></div>
+        <div><strong>Celebraciones</strong><span>Cumpleaños, aniversarios, despedidas</span></div>
+        <div><strong>Empresas</strong><span>Team building y eventos corporativos</span></div>
+      </div>
+    </div>
+    <video class="prueba__media" id="barraVideo" src="gallery/barra-nomada.mp4" poster="gallery/barra-nomada.jpg" autoplay muted loop playsinline></video>
+  </div>
+  <a class="section-scrolldown" href="#experiencias"><span></span>Experiencias</a>
+</section>
 
 <section class="section" id="experiencias">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Cómo lo vivimos</span>
+      <span class="eyebrow">Experiencias</span>
       <h2>Un mismo proceso, cuatro maneras de vivirlo.</h2>
       <p>Botánicos macerados en directo, la historia del vermut contada sin aburrir, y siempre algo de juego de por medio.</p>
     </div>
@@ -137,14 +155,14 @@
   </div>
 </section>
 
-<section class="section contacto">
+<section class="section contacto" id="contacto">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Hablemos</span>
       <h2>Cuéntanos tu evento y vemos cómo encaja.</h2>
       <p>Respondemos por WhatsApp — es la vía más rápida para fechas, presupuestos y disponibilidad.</p>
     </div>
-    <a class="btn btn-primary" href="https://wa.me/34677118651?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Caldero%20%26%20Copa" target="_blank">Escríbenos por WhatsApp</a>
+    <a class="btn btn-primary" href="https://wa.me/34XXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Caldero%20%26%20Copa" target="_blank">Escríbenos por WhatsApp</a>
   </div>
 </section>
 
@@ -160,8 +178,8 @@
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="https://wa.me/34677118651" target="_blank">WhatsApp</a></li>
-          <li><a href="https://instagram.com/calderoycopa" target="_blank">Instagram</a></li>
+          <li><a href="https://wa.me/34XXXXXXXXX" target="_blank"><span class="social-icon">💬</span>WhatsApp</a></li>
+          <li><a href="https://instagram.com/calderoycopa" target="_blank"><span class="social-icon">📷</span>Instagram</a></li>
         </ul>
       </div>
     </div>
@@ -174,6 +192,9 @@
   window.addEventListener('scroll', function(){
     nav.classList.toggle('is-scrolled', window.scrollY > 40);
   });
+
+  var barraVideo = document.getElementById('barraVideo');
+  if(barraVideo){ barraVideo.playbackRate = 1; }
 </script>
 
 </body>

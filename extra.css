@@ -103,6 +103,96 @@
   .mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px; }
 }
 
+/* ---------- Vídeo de la Barra Nómada (mismo look que .prueba img) ---------- */
+.prueba__media{
+  width:100%;
+  height:auto;
+  border-radius:6px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+  display:block;
+  object-fit:cover;
+}
+@media(max-width:860px){
+  .prueba__media{ max-width:320px; margin:0 auto; }
+}
+
+/* ---------- Chips de "dónde lo llevamos" en la Barra Nómada ---------- */
+#barra-nomada .prueba__stats{ gap:.9rem; }
+#barra-nomada .prueba__stats div{
+  background:rgba(255,249,239,.07);
+  border-radius:10px;
+  padding:1.1rem 1.3rem;
+  min-width:170px;
+}
+#barra-nomada .prueba__stats div strong{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:1rem;
+  text-transform:none;
+  letter-spacing:0;
+  color:var(--bone-50);
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+#barra-nomada .prueba__stats div strong::before{
+  content:"";
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--vermut-600);
+  flex-shrink:0;
+}
+#barra-nomada .prueba__stats div span{
+  display:block;
+  margin-top:.35rem;
+  margin-left:1.1rem;
+  font-family:var(--font-body);
+  font-size:.85rem;
+  text-transform:none;
+  letter-spacing:0;
+  color:var(--bone-300);
+}
+
+/* ---------- Iconos de contacto en el footer ---------- */
+.footer-links a{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-size:1rem;
+}
+.footer-links .social-icon{
+  font-size:1.4rem;
+  line-height:1;
+}
+
+/* ---------- Espaciado + invitación a seguir bajando en Barra Nómada ---------- */
+#barra-nomada{
+  padding:clamp(3rem,7vw,5.5rem) 0 clamp(2.25rem,5vw,3.5rem);
+}
+.section-scrolldown{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.5rem;
+  width:max-content;
+  margin:2.75rem auto 0;
+  font-family:var(--font-mark);
+  font-size:.68rem;
+  letter-spacing:var(--tracking-wider);
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--bone-200);
+  opacity:.85;
+  transition:opacity .2s ease;
+}
+.section-scrolldown:hover{ opacity:1; color:var(--bone-50); }
+.section-scrolldown span{
+  width:1px; height:22px;
+  background:currentColor;
+  animation:scrolldown 1.8s ease-in-out infinite;
+  transform-origin:top;
+}
+
 /* ---------- Contacto ---------- */
 .contacto .section-head{ max-width:560px; }
 .contacto .btn{ margin-top:.5rem; }
